@@ -14,14 +14,14 @@ class OpenSpace_df:
 
     def __init__(self, nb_tables=6):
         # Create a list of all Table instances to represent each table in the open space
-        self.tables_list = [Table().table_df for i in range(nb_tables)]
+        self.tables_list = [Table().table_df for n in range(nb_tables)]
         # Ensure we can get access to the final DataFrame right from the OpenSpace instance
         self.openspace_df = self.make_openspace_df()
 
     def make_openspace_df(self, nb_tables=6):
         # Concatenate table instances in a single DF being the full initial empty openspace
         data = {
-            f"Table {i + 1}": table_df for i, table_df in enumerate(self.tables_list)
+            f"Table {i + 1}": self.tables_list[i] for i in range(len(self.tables_list))
         }
         df = pd.concat(list(data.values()), axis=1)
         df.columns = [f"Table {i}" for i in range(1, nb_tables + 1)]
