@@ -14,7 +14,7 @@ class OpenSpace_df:
 
     def __init__(self, nb_tables=6):
         # Create a list of all Table instances to represent each table in the open space
-        self.tables_list = [Table().table_df for _ in range(nb_tables)]
+        self.tables_list = [Table().table_df for i in range(nb_tables)]
         # Ensure we can get access to the final DataFrame right from the OpenSpace instance
         self.openspace_df = self.make_openspace_df()
 
