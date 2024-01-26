@@ -1,17 +1,22 @@
-# imports here
-from src.utils import xxx 
-from src.table import  Table
-from src.openspace import zzz
+import pandas as pd
+from src.table import Table
+from src.openspace import OpenSpace_df
 
-x1 = xxx(arg=111)  # calling the function or class xxx from src utils directly
-
-
-
-
-# protect to call main from anyother script than main 
+# protect the main script 
 if __name__ == "__main__":
-    # your code here
-    # read the people from list 
-    # divide the people accross table/chair
-    # show output
+    # import the liste of colleagues 
+    colleagues_list = pd.read_csv('colleagues.csv')['Name']
+    
+    #create the OpenSpace instance (that will itself create the table instance)
+    a = OpenSpace_df()
+
+    #divide the people accross table/chair  
+    a.random_allocate(colleagues_list)
+  
     # store output 
+    b = a.openspace_df
+   
+    # show output
+    print(b)
+
+
