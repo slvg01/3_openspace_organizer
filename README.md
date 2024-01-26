@@ -18,13 +18,13 @@
 - You want to build a program that allows you to 
     - get a list of colleagues from an Excel file, 
     - place them randomly at the different tables of the open space.
+
 - The default setup of the open space is 6 tables of 4 seats → 24 seats
     - The program takes a filepath as an argument to load the list of colleagues
     - The program distributes at random the people on the existing tables and says how many seats are left
     - The program can gracefully deal with the possibility of having too many people in the room
     - The program has functionality to display the repartition at any given point:
     - The number of people in the room
-    - The number of available seats in the room
     - The number of seats that are left
 
 ## Nice to have features (on the nth branch is getting there)
