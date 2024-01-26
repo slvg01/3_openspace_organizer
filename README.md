@@ -1,8 +1,8 @@
 
-# Target : Create an openspace Organizer
+# Target : Create an openspace Organizer for training purpose
 
 ## Details 
-### The openspace organizer must be able  randomly assigning people to a spot in the open space. The algorythm and code themselves must 
+### The openspace organizer must be able randomly assigning people to a spot in the open space. The algorythm and code themselves must 
 - Make good use of classes using the object-oriented programming (OOP) paradigm
 - Use imports in a clean way
 - Use a clean architecture
@@ -14,7 +14,7 @@
 - locally with Git 
 - remotely on GitHub
 
-## Must have features 
+## Must have features (on the main branch)
 - You want to build a program that allows you to 
     - get a list of colleagues from an Excel file, 
     - place them randomly at the different tables of the open space.
@@ -27,7 +27,7 @@
     - The number of available seats in the room
     - The number of seats that are left
 
-## Nice to have features 
+## Nice to have features (on the nth branch is getting there)
 - Once you have a basic program, you want to make it more interactive and more configurable. Here are a couple of suggestions:
     - Add the possibility to change interactively the setup and rerun the program
     - Add the possibility to outsource (part of) the room setup from a config.json file

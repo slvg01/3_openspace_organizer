@@ -1,17 +1,20 @@
 import pandas as pd
 import numpy as np
 
-    
-class OpenSpace_df:        
-    def __init__ (self, capacity =4, nb_tables=6):
+
+class OpenSpace_df:
+    def __init__(self, capacity=4, nb_tables=6):
         self.capacity = capacity
-        self.table_df = pd.DataFrame({f'Table {i}': [None] * self.capacity for i in range(1, self.capacity + 1)}, 
-                                     index=range(1, self.capacity + 1))
-        
+        self.table_df = pd.DataFrame(
+            {f"Table {i}": [None] * self.capacity for i in range(1, self.capacity + 1)},
+            index=range(1, self.capacity + 1),
+        )
+
+
 b = OpenSpace_df()
 c = b.table_df
 print(b)
-print(c)   
+print(c)
 
 """ class Table:
     #allow to create instance of table of 4 spots
