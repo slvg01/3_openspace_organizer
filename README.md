@@ -1,12 +1,9 @@
-![image](https://github.com/slvg01/openspace-organizer/assets/151031347/14ee64d7-eedc-4465-bf25-4ea4a48665f8)
-
 # Target : Create an Openspace Organizer - for training purpose
-
 
 
 ## Details 
 
-### The Openspace Organizer must be able randomly assigning people to a spot in the open space. The algorythm and code themselves must 
+### The Openspace Organizer is able to randomly assign people to a spot in the open space. The algorythm and code themselves must 
 - Make good use of classes using the object-oriented programming (OOP) paradigm
 - Use imports in a clean way
 - Use a clean architecture
@@ -15,12 +12,12 @@
 
 
 ## Installation and running
-- you must clone the full repo including the src folder that contains the class and function script 
-- script are built with relative path so normally no issue
-- launch is done from main.py 
-- pandas must be available
+- built on python version 3.11.5: [Python interpreter](https://www.python.org/downloads/) at minima is needed  or [IDE](https://code.visualstudio.com/download)
+- clone the full repo including the src folder that contains the class and function script 
+- script are built with relative path thus launch from:   openspace-organizer> python main.py
+- you must have a csv file with the names to load in the main directory. A default file callded colleagues.csv is preloaded. If you change that file name please change the load instruction accordingly on main.py
 - you may change the nb of seats per table in the table.py script, class Table argument - default is 4 
-- you change the nb of table in the openspace.py script class OpenSpace argument directmy -default is 6 -  or when instantiating this class in the main.py 
+- you change the nb of table in the openspace.py script class OpenSpace argument -default is 6  
 
 ## Main features (on the main branch)
 The default setup of the open space is 6 tables of 4 seats → 24 seats
