@@ -1,4 +1,4 @@
-# Target : Create an Openspace Organizer - for training purpose
+# Target : Create an Openspace Organizer - (training purpose)
 
 
 ## Details 
