@@ -1,7 +1,7 @@
 # Target : Create an Openspace Organizer - (training purpose)
 
 
-## Details objectives : 
+## Exercice objectives : 
 The Openspace Organizer is able to randomly assign people to a spot in the open space. The algorythm and code themselves must 
 - Make good use of classes using the object-oriented programming (OOP) paradigm
 - Use imports in a clean way
@@ -9,14 +9,6 @@ The Openspace Organizer is able to randomly assign people to a spot in the open 
 - Read data from an Excel file
 - Structure and present a GitHub project
 
-
-## Installation and running
-- built on python version 3.11.5: [Python interpreter](https://www.python.org/downloads/) at minima is needed  or [IDE](https://code.visualstudio.com/download)
-- clone the full repo including the src folder that contains the class and function script 
-- script are built with relative path thus launch from:   openspace-organizer> python main.py
-- you must have a csv file with the names to load in the main directory. A default file callded colleagues.csv is preloaded. If you change that file name please change the load instruction accordingly on main.py
-- you may change the nb of seats per table in the table.py script, class Table argument - default is 4 
-- you change the nb of table in the openspace.py script class OpenSpace argument -default is 6  
 
 ## Main features (on the main branch)
 The default setup of the open space is 6 tables of 4 seats → 24 seats
@@ -29,8 +21,6 @@ The default setup of the open space is 6 tables of 4 seats → 24 seats
 
 ![Alt text](image.png)
 
-
-
 ## Nice to have features (on the NTH branch if getting there) - not done yet 
 - possibility to change interactively the setup and rerun the program
 - possibility to outsource (part of) the room setup from a config.json file
@@ -38,3 +28,11 @@ The default setup of the open space is 6 tables of 4 seats → 24 seats
 - possibility to add a table if the room is full
 - possibility to integrate an Excel "conditions" list → X wants to be seated next to Y, or X doesn't want to be seated next to Y
 - Improve the algorithm to avoid having someone alone at a table
+
+## Installation and running
+- built on python version 3.11.5: [Python interpreter](https://www.python.org/downloads/) at minima is needed  or [IDE](https://code.visualstudio.com/download)
+- clone the full repo including the src folder that contains the class and function script 
+- script are built with relative path thus launch from:   openspace-organizer> python main.py
+- you must have a csv file with the names to load in the main directory. A default file callded colleagues.csv is preloaded. If you change that file name please change the load instruction accordingly on main.py
+- you may change the nb of seats per table in the table.py script, class Table argument - default is 4 
+- you change the nb of table in the openspace.py script class OpenSpace argument -default is 6  
