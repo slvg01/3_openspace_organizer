@@ -10,8 +10,8 @@ The Openspace Organizer is able to randomly assign people to a spot in the open 
 - Structure and present a GitHub project
 
 
-## Main features (on the main branch)
-The default setup of the open space is 6 tables of 4 seats → 24 seats
+## Main features (on the main branch) - DONE 
+- The default setup of the open space is 6 tables of 4 seats → 24 seats
 - The program takes an XL list of colleagues file as argument to the load in the main.py script
 - The program distributes at random the people on the existing tables and says how many seats are left
 - The program can gracefully deal with the possibility of having too many people in the room
@@ -21,9 +21,9 @@ The default setup of the open space is 6 tables of 4 seats → 24 seats
 
 ![Alt text](image.png)
 
-## Nice to have features (on the NTH branch if getting there) - not done yet 
+## Nice to have features (on the NTH branch if getting there) - PARTLY DONE (very)
+- (DONE) possibility to outsource (part of) the room setup from a config.json file
 - possibility to change interactively the setup and rerun the program
-- possibility to outsource (part of) the room setup from a config.json file
 - possibility to add someone in the room (for instance, a new colleague arriving or someone being late)
 - possibility to add a table if the room is full
 - possibility to integrate an Excel "conditions" list → X wants to be seated next to Y, or X doesn't want to be seated next to Y
