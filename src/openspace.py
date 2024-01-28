@@ -38,7 +38,8 @@ class OpenSpace_df:
             # check if the openspace is full
             if df.isna().sum().sum() == 0:
                 print(
-                    f"Sorry {names[n]}, there is no more seat availalbe here, pleasecheck yourself if the second room"
+                    f"Sorry {names[n]}, there is no more seat availalbe here, pleasecheck yourself if the second room",
+                    "\n",
                 )
             else:
                 while True:
@@ -68,4 +69,4 @@ class OpenSpace_df:
         self.total_free = total_free
         self.total_taken = total_taken
         print("Total Free Spots:", total_free)
-        print("Total Taken Spots:", total_taken)
+        print("Total Taken Spots:", total_taken, "\n")

@@ -19,6 +19,6 @@ if __name__ == "__main__":
     # show output
     print(b)
 
-    # load out in a pdf
+    # load output in a pdf
     output_file = "output_file.csv"
     b.to_csv("output_file.csv")
