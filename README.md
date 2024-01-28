@@ -1,7 +1,8 @@
 # Target : Create an Openspace Organizer - (training purpose)
 
 
-## Details objectives : The Openspace Organizer is able to randomly assign people to a spot in the open space. The algorythm and code themselves must 
+## Details objectives : 
+The Openspace Organizer is able to randomly assign people to a spot in the open space. The algorythm and code themselves must 
 - Make good use of classes using the object-oriented programming (OOP) paradigm
 - Use imports in a clean way
 - Use a clean architecture
