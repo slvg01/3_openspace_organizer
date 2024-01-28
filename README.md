@@ -21,8 +21,8 @@ The Openspace Organizer is able to randomly assign people to a spot in the open 
 
 ![Alt text](image.png)
 
-## Nice to have features (on the NTH branch if getting there) - PARTLY DONE (very)
-- (DONE) possibility to outsource (part of) the room setup from a config.json file
+## Nice to have features (on the NTH branch if getting there) - NOT DONE 
+- possibility to outsource (part of) the room setup from a config.json file
 - possibility to change interactively the setup and rerun the program
 - possibility to add someone in the room (for instance, a new colleague arriving or someone being late)
 - possibility to add a table if the room is full
