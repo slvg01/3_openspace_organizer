@@ -1,5 +1,8 @@
+![image](https://github.com/slvg01/openspace-organizer/assets/151031347/14ee64d7-eedc-4465-bf25-4ea4a48665f8)
 
 # Target : Create an Openspace Organizer - for training purpose
+
+
 
 ## Details 
 
