@@ -1,6 +1,8 @@
+import json
 import pandas as pd
 import numpy as np
 from src.table import Table
+
 
 
 class OpenSpace_df:
@@ -12,19 +14,22 @@ class OpenSpace_df:
     and Taking care of over capacity
     """
 
-    def __init__(self, nb_tables=6):
+    def __init__(self, config_file="config.json"):
         # Create a list of all Table instances to represent each table in the open space
-        self.tables_list = [Table().table_df for n in range(nb_tables)]
+        with open(config_file, "r", encoding="utf-8") as f:
+            config = json.load(f).get("OpenSpace", {})
+            self.nb_tables = config.get("nb_tables", 6)
+        self.tables_list = [Table().table_df for n in range(self.nb_tables)]
         # Ensure we can get access to the final DataFrame right from the OpenSpace instance
         self.openspace_df = self.make_openspace_df()
 
-    def make_openspace_df(self, nb_tables=6):
+    def make_openspace_df(self):
         # Concatenate table instances in a single DF being the full initial empty openspace
         data = {
             f"Table {i + 1}": self.tables_list[i] for i in range(len(self.tables_list))
         }
         df = pd.concat(list(data.values()), axis=1)
-        df.columns = [f"Table {i}" for i in range(1, nb_tables + 1)]
+        df.columns = [f"Table {i}" for i in range(1, self.nb_tables + 1)]
         return df
 
     def random_allocate(self, names):

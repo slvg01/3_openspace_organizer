@@ -1,4 +1,5 @@
 import pandas as pd
+import json
 
 
 class Table:
@@ -7,10 +8,12 @@ class Table:
     the instances are initialized with None values everywhere
     """
 
-    def __init__(self, capacity=4):
-        self.capacity = capacity
+    def __init__(self, config_file="config.json"):
+        with open(config_file, "r", encoding="utf-8") as f:
+            config = json.load(f).get("Table", {})
+        self.capacity = config.get("capacity", 4)
         self.table_df = pd.DataFrame(
-            {f"Table": [None] * capacity for i in range(1, self.capacity + 1)},
+            {f"Table": [None] * self.capacity for i in range(1, self.capacity + 1)},
             index=range(1, self.capacity + 1),
         )
 
