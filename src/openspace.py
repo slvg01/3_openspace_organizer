@@ -4,7 +4,6 @@ import numpy as np
 from src.table import Table
 
 
-
 class OpenSpace_df:
 
     """Allow  :
@@ -37,7 +36,7 @@ class OpenSpace_df:
         take care of over capacity colleagues
         """
         df = self.openspace_df
-        allocated_names = list()
+        # allocated_names = list()
 
         for n in range(len(names)):
             # check if the openspace is full
@@ -56,14 +55,16 @@ class OpenSpace_df:
                     # Check if the selected random spot is empty
                     if pd.isna(random_spot) == True:
                         df.iloc[random_row, random_column] = names[n]
-                        allocated_names.append(names[n])
+                        # allocated_names.append(names[n])
                         print(
                             f"Dear {names[n]}, please sit on table {random_column + 1} at place {random_row + 1}"
                         )
                         self.count_situation()
                         break
                     # Allow to reinsert potentially rejected people to the list (because of taken seat)
-                    elif df.isna().sum().sum() == 0 and names[n] not in allocated_names:
+                    elif (
+                        df.isna().sum().sum() == 0
+                    ):  # and names[n] not in allocated_names:
                         break
 
     def count_situation(self):
@@ -75,3 +76,10 @@ class OpenSpace_df:
         self.total_taken = total_taken
         print("Total Free Spots:", total_free)
         print("Total Taken Spots:", total_taken, "\n")
+
+
+#'df = pd.concat(self.tables_list, axis=1, keys=[f"Table {i+1}" for i in range(len(self.tables_list))])'
+
+"""columns = [f"Table {i+1}" for i in range(len(self.tables_list))]
+df = pd.DataFrame({col: table for col, table in zip(columns, self.tables_list)})
+    #return df"""
