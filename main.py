@@ -1,6 +1,7 @@
 import pandas as pd
 from src.table import Table
-from src.openspace import OpenSpace_df
+from src.openspace import OpenSpace
+
 
 # protect the main script
 if __name__ == "__main__":
@@ -8,17 +9,13 @@ if __name__ == "__main__":
     colleagues_list = pd.read_csv("colleagues.csv")["Name"]
 
     # create the OpenSpace instance (that will itself create the table instance)
-    a = OpenSpace_df()
+    a = OpenSpace()
 
-    # divide the people accross table/chair
-    a.random_allocate(colleagues_list)
+    # divide the people accross table/chairs in the openspace
+    a.organize(colleagues_list)
 
     # store output
-    b = a.openspace_df
+    a.display()
 
     # show output
-    print(b)
-
-    # load output in a pdf
-    output_file = "output_file.csv"
-    b.to_csv("output_file.csv")
+    a.store("output_file")

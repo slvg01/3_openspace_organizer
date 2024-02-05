@@ -7,6 +7,8 @@
 - The program deal with the possibility of having too many people in the room
 - The program display the number of people in the room & the number of seats that are left
 - the code output a dataframe with the final repartition (name) in the terminal and in an xl file (output_file.csv)
+- in branch nice_to_have : 
+    - possibility to outsource the room setup from a config.json file (nb of table, nb of people per table)
 
 
 ![Alt text](image.png)
@@ -16,7 +18,5 @@
 - running :   openspace-organizer> python main.py
 - src folder contains the classes and functions script 
 - input is a colleagues.csv file (default one is  inthe folder) 
-- you may change the nb of seats per table in the table.py script, class Table argument - default is 4 
-- you change the nb of table in the openspace.py script class OpenSpace argument -default is 6  
-- built on python version 3.11.5: [Python interpreter](https://www.python.org/downloads/) at minima is needed  or [IDE](https://code.visualstudio.com/download)
-
+- you can customize the nb of tables and seats per table in the config.json file 
+- built on python version 3.11.5

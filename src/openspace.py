@@ -1,85 +1,75 @@
 import json
 import pandas as pd
-import numpy as np
+import random
 from src.table import Table
+from src.table import Seat
 
 
-class OpenSpace_df:
+class OpenSpace:
 
     """Allow  :
-    to create a representation of the open space in data frame of n(seats/table)*N(nb of tables)
-    To randomaize the allocation of colleagues to available seast in the room
-    while counting/displayin the current capacity status
-    and Taking care of over capacity
+    to create an openspace of n Table instance , counting free anc occupied Seats instance
+    and allow randomized allocation of the loaded people list (in main), display and store
+    the final result in a csv file.
     """
 
     def __init__(self, config_file="config.json"):
-        # Create a list of all Table instances to represent each table in the open space
         with open(config_file, "r", encoding="utf-8") as f:
             config = json.load(f).get("OpenSpace", {})
             self.nb_tables = config.get("nb_tables", 6)
-        self.tables_list = [Table().table_df for n in range(self.nb_tables)]
-        # Ensure we can get access to the final DataFrame right from the OpenSpace instance
-        self.openspace_df = self.make_openspace_df()
-
-    def make_openspace_df(self):
-        # Concatenate table instances in a single DF being the full initial empty openspace
-        data = {
-            f"Table {i + 1}": self.tables_list[i] for i in range(len(self.tables_list))
-        }
-        df = pd.concat(list(data.values()), axis=1)
-        df.columns = [f"Table {i}" for i in range(1, self.nb_tables + 1)]
-        return df
-
-    def random_allocate(self, names):
-        """allocation randomly a list of names throuh the openspace and
-        take care of over capacity colleagues
-        """
-        df = self.openspace_df
-        # allocated_names = list()
-
-        for n in range(len(names)):
-            # check if the openspace is full
-            if df.isna().sum().sum() == 0:
-                print(
-                    f"Sorry {names[n]}, there is no more seat availalbe here, pleasecheck yourself if the second room",
-                    "\n",
-                )
-            else:
-                while True:
-                    # calculate a random spot
-                    random_row = np.random.randint(0, df.shape[0])
-                    random_column = np.random.randint(0, df.shape[1])
-                    random_spot = df.iloc[random_row, random_column]
-
-                    # Check if the selected random spot is empty
-                    if pd.isna(random_spot) == True:
-                        df.iloc[random_row, random_column] = names[n]
-                        # allocated_names.append(names[n])
-                        print(
-                            f"Dear {names[n]}, please sit on table {random_column + 1} at place {random_row + 1}"
-                        )
-                        self.count_situation()
-                        break
-                    # Allow to reinsert potentially rejected people to the list (because of taken seat)
-                    elif (
-                        df.isna().sum().sum() == 0
-                    ):  # and names[n] not in allocated_names:
-                        break
+            self.tables_list = [Table(i) for i in range(1, self.nb_tables + 1)]
 
     def count_situation(self):
-        ### Count and print the total free and taken spots in the open space
-        df = self.openspace_df
-        total_free = df.isna().sum().sum()
-        total_taken = df.shape[0] * df.shape[1] - total_free
-        self.total_free = total_free
-        self.total_taken = total_taken
+        # Count and print the total free and taken spots in the the whole openspace
+        total_free = sum(table.capacity_left() for table in self.tables_list)
+        total_taken = sum(
+            table.capacity - table.capacity_left() for table in self.tables_list
+        )
         print("Total Free Spots:", total_free)
         print("Total Taken Spots:", total_taken, "\n")
 
+    def organize(self, names):
+        """allocaterandomly a list of names throuh the openspace and
+        take care of over capacity colleagues
+        """
 
-#'df = pd.concat(self.tables_list, axis=1, keys=[f"Table {i+1}" for i in range(len(self.tables_list))])'
+        names = list(names)
 
-"""columns = [f"Table {i+1}" for i in range(len(self.tables_list))]
-df = pd.DataFrame({col: table for col, table in zip(columns, self.tables_list)})
-    #return df"""
+        while names:
+            name = names.pop(0)
+            seat_allocated = False
+
+            # Shuffle the tables order in each iteration
+            randomized_table_list = random.sample(
+                self.tables_list, k=len(self.tables_list)
+            )
+            # loop to attempt allocating the load to a free spot
+            for table in randomized_table_list:
+                if table.assign_seat(name):
+                    seat_allocated = True
+                    self.count_situation()
+                    break
+            # take care of the extra people versus the available total space
+            if not seat_allocated:
+                print(
+                    f"Sorry {name}, there is no more seat available here. Please check yourself if the second room.",
+                    "\n",
+                )
+                # Re-add the name to the list to try again if it was skipped (taken seat)
+                continue
+                names.append(name)
+
+    def display(self, capacity=4, nb_tables=6):
+        # to display the different tables and their occupants in a nice and readable way
+        table_data = {}
+        for table in self.tables_list:
+            table_data[f"Table {table.table_id}"] = {
+                f"Seat {i + 1}": seat.occupant for i, seat in enumerate(table.seats)
+            }
+        self.openspace_df = pd.DataFrame(table_data)
+        print(self.openspace_df)
+
+    def store(self, filename):
+        # to store the repartition in csv  file
+        final_output = f"{filename}.csv"
+        self.openspace_df.to_csv(final_output)
