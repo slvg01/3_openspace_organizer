@@ -1,5 +1,6 @@
 # Project Objective : Create an Openspace Organizer for office or more
 
+## this second version is just a different approach on the openspace class code without using dataframe directly. Features are the same as in the main branch:
 
 ## Main features : 
 - The program takes an XL list of people as argument
