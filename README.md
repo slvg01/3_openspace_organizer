@@ -1,4 +1,4 @@
-# Target : Create an Openspace Organizer - (training purpose)
+# Pojrect objective : Create an Openspace Organizer for office or others
 
 
 ## Exercice objectives : 
