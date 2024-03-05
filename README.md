@@ -13,7 +13,7 @@
 
 
 ## Installation and running
-- running :   openspace-organizer> python main.py
+- running :   3_openspace-organizer> python main.py
 - src folder contains the classes and functions script 
 - input is a colleagues.csv file (default one is  inthe folder) 
 - you may change the nb of seats per table in the table.py script, class Table argument - default is 4 
